@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void solde_all(){
+void show_all(){
 
 }
 
-void solde_type(){
+void show_account(){
 
 }
 

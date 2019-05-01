@@ -1,20 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-strut compte{}
+typedef struct{
+	char[] name;
+	int taux;
+} t_account;
 
-void creer_compte(){
+typedef struct{
+	int id_account;
+	int id_client;
+	int solde;
+	int time;
+} account;
+
+void add_account(){
 
 }
 
-void consultation(int id_client){
+void del_account(){
 
 }
 
-void virement(int id_emetteur, int id_destinataire, int somme){
+void show_account(int id_client){
 
 }
 
-void historique(){
+void transfer(int id_sender, int id_recipient, int credit){
+
+}
+
+void histo(){
+
+}
+
+void add_credit(){
+
+}
+
+void sub_credit(){
 
 }
