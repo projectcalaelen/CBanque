@@ -1,20 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct client{}
+typedef struct{
+	
+} client;
 
-void ajouter_client(){
-
-}
-
-void modifier_client(){
+void add_client(){
 
 }
 
-void supprimer_client(int id){
+void edit_client(){
 
 }
 
-void rechercher(char* string){
+void delete_client(int id){
+
+}
+
+void search_client(char* string){
 
 }
