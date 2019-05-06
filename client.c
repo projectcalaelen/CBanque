@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-const int MAX_CHAR 15
+#define MAX_CHAR 15
 
 typedef struct{
 	int id_client;
-	char[MAX_CHAR] lastname;
-	char[MAX_CHAR] firstname;
-	char[MAX_CHAR] profession;
+	char lastname[MAX_CHAR];
+	char firstname[MAX_CHAR];
+	char profession[MAX_CHAR];
 	int tel;
 } Client;
 
@@ -26,7 +26,7 @@ typedef struct{
  *	OUTPUT:
  *		- Client new			:	Typedef Client of the client
  */
-Client add_client(int id_client, char* lastname, char* firstname, char* profession, int tel){
+Client add_client(int id_client, char const* lastname, char const* firstname, char const* profession, int tel){
 	Client new;
 	for(int i=0;i<MAX_CHAR;i++){
 		new.lastname[i] = lastname[i];
@@ -91,4 +91,26 @@ void delete_client(int id){
 
 void search_client(Client** tab, int t_tab, char* string, int t_string){
 	
+}
+
+void show_client(Client* self){
+    printf("Client N°%d\n", self->id_client);
+    printf("Nom : %s\n", self->lastname);
+    printf("Prenom : %s\n", self->firstname);
+    printf("Profession : %s\n", self->profession);
+    printf("Tel : %d\n", self->tel);
+}
+
+int main(){
+    char nom[MAX_CHAR] = "Bouvet";
+    char prenom[MAX_CHAR] = "Pacome";
+    char profession[MAX_CHAR] = "Etudiant";
+    int tel = 683602417;
+    Client client = add_client(1, nom, prenom, profession, tel);
+    show_client(&client);
+    char nom_bis[MAX_CHAR] = "Byszewski";
+    edit_client(&client, 2, nom_bis, 0);
+    printf("\n");
+    show_client(&client);
+
 }
