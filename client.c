@@ -1,7 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #define MAX_CHAR 15
+#include "client.h"
 
 typedef struct{
 	int id_client;
