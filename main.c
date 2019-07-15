@@ -66,13 +66,13 @@ void menu_operation(Account *account_list, int nb_compte){
     scanf("%d", &choix);
     switch(choix){
       case 1:
-        depot(account_list);
+        depot(account_list, nb_compte);
         break;
       case 2:
-        retrait(account_list);
+        retrait(account_list, nb_compte);
         break;
       case 3:
-        virement(account_list);
+        virement(account_list, nb_compte);
         break;
       case 0:
         return;
