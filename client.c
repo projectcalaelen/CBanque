@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 void add_client(Client *client_list, int nb_client){
@@ -67,8 +68,34 @@ void del_client(Client *client_list){
 void search_client(Client *client_list, int nb_client){
   printf("Veuillez rentrer votre recherche:");
   char search[15];
-  scanf("%d", &search);
-  for(int i = 0; i < nb_client; i++){
-    
+  scanf("%s", &search);
+  t_string = strlen(search);
+  for(int i = 0; i<t_string; i++){
+    if("*" == search[i]){
+      search[i] = "\0";
+    }
   }
+  for(int i = 0; i< nb_client; i++){
+    if(strncmp(search, list_client[i]->lastname, t_string -1) == 0){
+      printf("%d: %s %s\n", list_client[i]->id_client, list_client[i]->lastname, list_client[i]->firstname);
+    }
+  }
+  return;
+}
+
+void show_client(Client *client_list, int nb_client){
+  printf("Rentrer l'id du client que vous voulez afficher:\n");
+  int id = NULL;
+  scanf("%d", &id);
+  for(int i = 0; i<nb_client; i++){
+    if( id == list_client[i]->id){
+      printf("ID: %d\n", list_client[i]->id);
+      printf("Lastname: %s\n", list_client[i]->lastname);
+      printf("Firstname: %s\n", list_client[i]->firstname);
+      printf("profession: %s\n", list_client[i]->profession);
+      printf("telephone: %s\n", list_client[i]->tel);
+      break;
+    }
+  }
+  return;
 }
