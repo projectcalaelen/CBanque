@@ -1,94 +1,74 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-const int MAX_CHAR 15
 
-typedef struct{
-	int id_client;
-	char[MAX_CHAR] lastname;
-	char[MAX_CHAR] firstname;
-	char[MAX_CHAR] profession;
-	int tel;
-} Client;
 
-/*			ADD_CLIENT
- *
- *	Create a new client with a unique id, firstname, lastname,
- *	profession and telephone
- *	
- *	INPUT:
- *		- int id_client			:	Unique id
- *		- char* firstname		:	firstname of the client
- *		- char* lastname		:	lastname of the client
- *		- char* professopn		:	profession of the client
- *		- int tel				:	telephone of the client
- *	
- *	OUTPUT:
- *		- Client new			:	Typedef Client of the client
- */
-Client add_client(int id_client, char* lastname, char* firstname, char* profession, int tel){
-	Client new;
-	for(int i=0;i<MAX_CHAR;i++){
-		new.lastname[i] = lastname[i];
-		new.firstname[i] = firstname[i];
-		new.profession[i] = profession[i];
-	}
-	new.id_client = id_client;
-	new.tel = tel;
-
-	return new;
+void add_client(Client *client_list, int nb_client){
+  printf("Veuillez rentrer un nom\n");
+  scanf("%s", client_list[nb_client]->lastname);
+  printf("Entrez un prenom\n");
+  scanf("%s", client_list[nb_client]->firstname);
+  printf("Rentrez une profession\n");
+  scanf("%s", client_list[nb_client]->profession);
+  printf("Rentrez un numero de telephone\n");
+  scanf("%d", client_list[nb_client]->tel;
+  client_list[nb_client]->id_client = nb_client;
+  return;
 }
 
-
-/*			EDIT_CLIENT
- *
- *	Update the information of a client. wich field will be updated will
- * 	depend on the field value:
- *		- 1 				:	firstname
- *		- 2 				:	lastname
- *		- 3 				:	profession
- *		- 4 				:	telephone number
- *	
- *	INPUT:
- *		- Client* self		:	Client to be updated
- *		- int field			:	Field to be updated
- *		- char* char_val	:	Values if it's a string
- *		- int int_val		:	Values if it's an int
- *
- *	OUTPUT:
- *		
- */
-void edit_client(Client* self, int field, char* char_val, int int_val){
-	switch(field){
-		case 1:
-			for(int i=0; i<MAX_CHAR; i++){
-				self->firstname[i] = char_val[i];
-			}
-			break;
-		case 2:
-			for(int i=0; i<MAX_CHAR; i++){
-				self->lastname[i] = char_val[i];
-			}
-			break;
-		case 3:
-			for(int i=0; i<MAX_CHAR; i++){
-				self->profession[i] = char_val[i];
-			}
-			break;
-		case 4:
-			self->tel = int_val;
-			break;
-		default:
-			return;
-	}
+void edit_client(CLient *client_list, int nb_client){
+  printf("Veuillez rentrer l'id du compte\n");
+  int id = -1;
+  scanf("%d", &id);
+  int out = 0;
+  int choix = 10;
+  while(out==0){
+    printf("Veuillez choisir un champ a modifier\n");
+    printf("1. Nom\n");
+    printf("2. Prenom\n");
+    printf("3. Profession\n");
+    printf("4. Telephone\n");
+    printf("0. retour\n");
+    scanf("%d", &choix);
+    switch(choix){
+      case 1:
+        printf("Veuillez rentrer un nom\n");
+        scanf("%s", client_list[id]->lastname);
+        break;
+      case 2:
+        printf("Veuillez rentrer un prenom\n");
+        scanf("%s", client_list[id]->firstname);
+        break;
+      case 3:
+        printf("Veuillez rentrer une profession\n");
+        scanf("%s", client_list[id]->profession);
+        break;
+      case 4:
+        printf("Veuillez rentre un numero de telephone\n");
+        scanf("%s", client_list[id]->tel);
+        break;
+      case 0:
+        out = 1;
+        break;
+      default:
+        printf("Veuillez saisir une option valide\n");
+        break;
+    }
+  }
+  return;
 }
 
-
-
-void delete_client(int id){
-
+void del_client(Client *client_list){
+  printf("Veuillez saisir l'id du client\n");
+  int id = 0;
+  scanf("%d", &id);
+  client_list[id]->id = -1;
 }
 
-void search_client(Client** tab, int t_tab, char* string, int t_string){
-	
+void search_client(Client *client_list, int nb_client){
+  printf("Veuillez rentrer votre recherche:");
+  char search[15];
+  scanf("%d", &search);
+  for(int i = 0; i < nb_client; i++){
+    
+  }
 }
