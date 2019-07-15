@@ -103,7 +103,6 @@ void menu_client(Client *client_list, int *nb_client, int *nb_max_client){
         break;
       case 2:
         del_client(client_list, &nb_client);
-        nb_client--;
         break;
       case 3:
         search_client(client_list, nb_client);
@@ -140,7 +139,6 @@ void menu_compte(Account *account_list, int* nb_compte, int* nb_max_compte){
         break;
       case 2:
         del_account(account_list, &nb_compte);
-        nb_compte--;
         break;
       case 3:
         manage_account(account_list, nb_compte);
