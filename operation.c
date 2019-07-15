@@ -1,15 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "operation.h"
+
 
 void depot(Account *account_list, int nb_compte){
-  int id = NULL, int depot = NULL;
+  int id = NULL, depot = 0;
   printf("Veuillez rentrer le compte à crediter:\n");
   scanf("%d", &id);
   printf("Veuillez rentrer le montant à crediter:\n");
   scanf("%d", &depot);
   for(int i = 0; i<nb_compte; i++){
-    if(account_list[i]->id_account == id){
-      account_list[i]->solde += depot + (depot*account_list[i]->type.taux/100);
+    if(account_list[i].id_account == id){
+      account_list[i].solde += depot + (depot*account_list[i].type.taux/100);
       break;
     }
   }
@@ -17,14 +17,14 @@ void depot(Account *account_list, int nb_compte){
 }
 
 void retrait(Account *account_list, int nb_compte){
-  int id = NULL, int retrait = NULL;
+  int id = NULL, retrait = NULL;
   printf("Veuillez rentrer le compte à dediter:\n");
   scanf("%d", &id);
   printf("Veuillez rentrer le montant à dediter:\n");
   scanf("%d", &retrait);
   for(int i = 0; i<nb_compte; i++){
-    if(account_list[i]->id_account == id){
-      account_list[i]->solde -= retrait);
+    if(account_list[i].id_account == id){
+      account_list[i].solde -= retrait;
       break;
     }
   }
@@ -40,11 +40,11 @@ void virement(Account *account_list, int nb_compte){
   printf("Veuillez rentrer le montant à virer:\n");
   scanf("%d", &montant);
   for(int i = 0; i< nb_compte; i++){
-    if(account_list[i]->id_account == id_in){
-      account_list[i]->solde += montant;
+    if(account_list[i].id_account == id_in){
+      account_list[i].solde += montant;
       total++;
-    }else if(account_list[i]->id_account == id_out){
-      account_list[i]->solde -= montant;
+    }else if(account_list[i].id_account == id_out){
+      account_list[i].solde -= montant;
       total++;
     }
     if(total == 2){
