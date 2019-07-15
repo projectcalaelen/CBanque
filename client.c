@@ -1,17 +1,18 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-
 void add_client(Client *client_list, int nb_client){
+  char lastname[MAX_CHAR], firstname[MAX_CHAR], profession[MAX_CHAR];
+  int tel;
   printf("Veuillez rentrer un nom\n");
-  scanf("%s", client_list[nb_client]->lastname);
+  scanf("%s", &lastname);
   printf("Entrez un prenom\n");
-  scanf("%s", client_list[nb_client]->firstname);
+  scanf("%s", &firstname);
   printf("Rentrez une profession\n");
-  scanf("%s", client_list[nb_client]->profession);
+  scanf("%s", &profession);
   printf("Rentrez un numero de telephone\n");
-  scanf("%d", client_list[nb_client]->tel;
+  scanf("%d", &tel);
+  client_list[nb_client]->lastname = lastname;
+  client_list[nb_client]->firstname = firstname;
+  client_list[nb_client]->profession = profession;
+  client_list[nb_client]->tel = tel;
   client_list[nb_client]->id_client = nb_client;
   return;
 }
@@ -58,11 +59,16 @@ void edit_client(CLient *client_list, int nb_client){
   return;
 }
 
-void del_client(Client *client_list){
+void del_client(Client *client_list, int nb_client){
   printf("Veuillez saisir l'id du client\n");
   int id = 0;
   scanf("%d", &id);
-  client_list[id]->id = -1;
+  for(int i = O; i<nb_client; i++){
+    if(client_list[i]->id_client == id){
+      client_list[id]->id_client = -1;
+    }
+  }
+  return;
 }
 
 void search_client(Client *client_list, int nb_client){
