@@ -1,7 +1,7 @@
 #include "main.h"
 
 
-void menu_admin(){
+void menu_admin(Account *account_list, int nb_compte, t_account *type_list, int type_size, Client *client_list){
   printf("\n\nMenu admin\n");
   int out = 0;
   int choix = 10;
@@ -9,14 +9,22 @@ void menu_admin(){
     printf("Veullez faire un choix:\n");
     printf("1. Importer données\n");
     printf("2. Exporter données\n");
+    printf("3. Afficher la somme des montants de tous les comptes\n");
+    printf("4. Afficher la somme des montants par type de comptes\n");
     printf("0. Menu precedent\n");
     scanf("%d", &choix);
     switch(choix){
       case 1:
-        import();
+        import_data();
         break;
       case 2:
-        export();
+        export_data(account_list, nb_compte, client_list);
+        break;
+      case 3:
+        show_all(account_list, nb_compte);
+        break;
+      case 4:
+        show_type(account_list, nb_compte, type_size, type_list);
         break;
       case 0:
         return;
