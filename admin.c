@@ -16,11 +16,21 @@ void show_account(){
 
 }
 
-void export_data(){
+void export_data(int nb_compte){
 	//Compte + clients avec id != -1
 	FILE *fp;
 	fp = fopen("export.csv", "w+");
-	fprintf(fp, account_list);
+	fprintf(fp, "Id client, Id compte, Solde, Taux, Durée");
+	for (int i = 0; i < nb_compte; i++){
+		if (account_list[i].id_account != -1){
+			fprintf("\n");
+			fprintf(fp, account_list[i].id_client);
+			fprintf(fp, account_list[i].id_account);
+			fprintf(fp, account_list[i].solde);
+			fprintf(fp, account_list[i].type.taux);
+			fprintf(fp, account_list[i].type.time);
+		}
+	}
 	fclose(fp);
 }
 
