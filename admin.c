@@ -38,9 +38,13 @@ void export_data(Account *account_list, int nb_compte){
 		if (account_list[i].id_account != -1){
 			fprintf("\n");
 			fprintf(fp, account_list[i].id_client);
+			fprintf(",");
 			fprintf(fp, account_list[i].id_account);
+			fprintf(",");
 			fprintf(fp, account_list[i].solde);
+			fprintf(",");
 			fprintf(fp, account_list[i].type.taux);
+			fprintf(",");
 			fprintf(fp, account_list[i].type.time);
 		}
 	}
