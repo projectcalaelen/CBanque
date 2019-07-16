@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "admin.h"
 
-void show_all(int nb_compte){
+
+void show_all(Account *account_list, int nb_compte){
 	printf("Somme des montants de solde de tous les comptes: \n");
 	int solde_total = 0;
 	for (int i = 0; i < nb_compte; i++){
@@ -16,7 +16,7 @@ void show_account(){
 
 }
 
-void export_data(int nb_compte){
+void export_data(Account *account_list, int nb_compte){
 	//Compte + clients avec id != -1
 	FILE *fp;
 	fp = fopen("export.csv", "w+");
