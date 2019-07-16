@@ -12,8 +12,21 @@ void show_all(Account *account_list, int nb_compte){
 	printf("Solde: %d\n", solde_total);
 }
 
-void show_account(){
-
+void show_type(Account *account_list, int nb_compte, int type_size, t_account *type_list){
+  int montant[4] = 0;
+  for(int i = 0; i< nb_compte; i++){
+    if(account_list[i].id_account != -1){
+      if(strcmp(account_list[i].type.name, type_list[0].name) == 0){
+        montant[0] += account_list[i].solde;
+      }else if(strcmp(account_list[i].type.name, type_list[1].name) == 0){
+        montant[1] += account_list[i].solde;
+      }else if(strcmp(account_list[i].type.name, type_list[2].name) == 0){
+        montant[2] += account_list[i].solde;
+      }else if(strcmp(account_list[i].type.name, type_list[3].name) == 0){
+        montant[3] += account_list[i].solde;
+      }
+    }
+  }
 }
 
 void export_data(Account *account_list, int nb_compte){
