@@ -75,17 +75,17 @@ void menu_client(Client *client_list, int *nb_client, int *nb_max_client){
     scanf("%d", &choix);
     switch(choix){
       case 1:
-        add_client(client_list, nb_client);
+        add_client(client_list, *nb_client);
         nb_client++;
         break;
       case 2:
-        del_client(client_list, nb_client);
+        del_client(client_list, *nb_client);
         break;
       case 3:
-        search_client(client_list, nb_client);
+        search_client(client_list, *nb_client);
         break;
       case 4:
-        edit_client(client_list, nb_client);
+        edit_client(client_list, *nb_client);
         break;
       case 0:
         return;
@@ -101,7 +101,7 @@ void menu_client(Client *client_list, int *nb_client, int *nb_max_client){
 }
 
 
-void menu_compte(Account *account_list, int* nb_compte, int* nb_max_compte){
+void menu_compte(Account *account_list, int *nb_compte, int* nb_max_compte, t_account *type_list, int type_size){
   int out = 0;
   int choix = 0;
   printf("Menu Compte\n");
@@ -114,14 +114,14 @@ void menu_compte(Account *account_list, int* nb_compte, int* nb_max_compte){
     scanf("%d", &choix);
     switch(choix){
       case 1:
-        add_account(account_list, &nb_compte);
+        add_account(account_list, *nb_compte, type_list, type_size);
         *nb_compte++;
         break;
       case 2:
-        del_account(account_list, &nb_compte);
+        del_account(account_list, *nb_compte);
         break;
       case 3:
-        show_account(account_list, nb_compte);
+        show_account(account_list, *nb_compte);
         break;
       case 0:
         return;
@@ -141,7 +141,7 @@ void menu_compte(Account *account_list, int* nb_compte, int* nb_max_compte){
 int main(){
   char chaine[MAX_CHAR];
   t_account type_list[4];
-  int control = 0, i = 0;
+  int control = 0, i = 0, type_size = 4;
   FILE* file = fopen("config.ini","r");
   if(file == NULL){
     printf("Erreur Lecture fichier");
@@ -190,7 +190,7 @@ int main(){
         menu_client(client_list, &nb_client, &nb_max_client);
         break;
       case 2:
-        menu_compte(account_list, &nb_compte, &nb_max_compte);
+        menu_compte(account_list, &nb_compte, &nb_max_compte, type_list, type_size);
         break;
       case 3:
         menu_operation(account_list, nb_compte);
@@ -208,7 +208,6 @@ int main(){
   }
   free(client_list);
   free(account_list);
-  free(type_list);
   printf("Merci d'avoir utilisez CBanque");
   return EXIT_SUCCESS;
 }
