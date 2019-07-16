@@ -27,6 +27,9 @@ void show_type(Account *account_list, int nb_compte, int type_size, t_account *t
       }
     }
   }
+ 	for(int i = 0; i < 4; i++){
+  		printf("Sommes des montants des %s: %d\n", type_list[i].name, montant[i]);
+	}
 }
 
 void export_data(Account *account_list, int nb_compte){
